@@ -13,7 +13,11 @@ void printDirectoryContents(const char *directoryPath) {
     }
 
     printf("Содержимое каталога '%s':\n", directoryPath);
-    while ((entry = readdir(dir)) != NULL) {
+    while (1)
+    {
+        entry = readdir(dir);
+        if (entry == NULL)
+            break;
         printf("%s\n", entry->d_name);
     }
 

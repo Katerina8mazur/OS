@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     const char* filename = argv[1]; 
     FILE* file = fopen(filename, "w"); 
 
-    if (file == NULL) { 
+    if (file == NULL) {
         perror("Ошибка открытия файла");
         return 1;
     }
@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    if (fclose(file) == EOF) {
+    if (fclose(file) != 0) {
         perror("Ошибка закрытия файла");
         return 1;
     }

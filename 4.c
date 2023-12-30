@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
         putchar(ch); 
 
         if (ch == '\n') { 
-            ++lineCount;
+            lineCount++;
 
             if (N > 0 && lineCount % N == 0) {
                 printf("Нажмите любую клавишу для продолжения...");

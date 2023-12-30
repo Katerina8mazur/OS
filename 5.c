@@ -29,14 +29,14 @@ int main(int argc, char* argv[]) {
     }
 
     struct stat sourceFileStat;
-    if (stat(sourceFilename, &sourceFileStat) == -1) {
+    if (stat(sourceFilename, &sourceFileStat) != 0) {
         perror("Ошибка получения информации о файле");
         fclose(sourceFile);
         fclose(destinationFile);
         return 1;
     }
 
-    if (chmod(destinationFilename, sourceFileStat.st_mode) == -1) {
+    if (chmod(destinationFilename, sourceFileStat.st_mode) != 0) {
         perror("Ошибка установки прав доступа для файла назначения");
         fclose(sourceFile);
         fclose(destinationFile);
@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    if (fclose(sourceFile) == EOF || fclose(destinationFile) == EOF) {
+    if (fclose(sourceFile) != 0 || fclose(destinationFile) != 0) {
         perror("Ошибка закрытия файлов");
         return 1;
     }
